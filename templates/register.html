@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<h1>Регистрация</h1>
+
+<form method="post" id="registerForm" novalidate>
+    <input type="text" name="username" placeholder="Логин" required minlength="3"><br>
+
+    <input type="text" name="display_name" placeholder="Никнейм" required><br>
+
+    <input type="password" name="password" placeholder="Пароль" required minlength="6"><br>
+
+    <input type="password" name="confirm" placeholder="Повторите пароль" required><br>
+
+    <button type="submit">Зарегистрироваться</button>
+</form>
+
+<script>
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    const password = document.querySelector('input[name="password"]').value;
+    const confirm = document.querySelector('input[name="confirm"]').value;
+    const username = document.querySelector('input[name="username"]').value;
+
+    if (username.length < 3) {
+        alert("Логин должен быть не короче 3 символов.");
+        e.preventDefault();
+        return;
+    }
+
+    if (password.length < 6) {
+        alert("Пароль должен быть не короче 6 символов.");
+        e.preventDefault();
+        return;
+    }
+
+    if (password !== confirm) {
+        alert("Пароли не совпадают.");
+        e.preventDefault();
+        return;
+    }
+});
+</script>
+{% endblock %}

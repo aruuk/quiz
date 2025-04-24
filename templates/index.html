@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<h1>Добро пожаловать в Викторину</h1>
+<p>Узнай прогноз погоды перед тем как начать</p>
+
+<form method="post">
+    <input type="text" name="city" placeholder="Введите город" required>
+    <button type="submit">Узнать погоду</button>
+</form>
+
+{% if weather %}
+    <h2>Прогноз погоды</h2>
+    <div class="weather-widget-container">
+        {% for w in weather %}
+        <div class="weather-widget">
+            <h3>{{ w.day }}</h3>
+            <p>{{ w.date }}</p>
+            <p><strong>Днём:</strong> {{ w.temp_day }}°C</p>
+            <p><strong>Ночью:</strong> {{ w.temp_night }}°C</p>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}

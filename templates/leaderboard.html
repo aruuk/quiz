@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Таблица лидеров{% endblock %}
+
+{% block content %}
+<h1>Таблица лидеров</h1>
+<ol>
+    {% for user in users %}
+        <li>{{ user.display_name }} — {{ user.score }} баллов</li>
+    {% endfor %}
+</ol>
+{% endblock %}

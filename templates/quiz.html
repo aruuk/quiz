@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Викторина{% endblock %}
+
+{% block content %}
+<h1>Вопрос</h1>
+<p><strong>{{ question.question }}</strong></p>
+<form method="post">
+    {% for option in question.options %}
+        <input type="radio" name="answer" value="{{ option }}" required> {{ option }}<br>
+    {% endfor %}
+    <input type="hidden" name="correct" value="{{ question.correct }}">
+    <button type="submit">Ответить</button>
+</form>
+<p>Твой счёт: {{ score }}</p>
+{% endblock %}
