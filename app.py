@@ -21,6 +21,7 @@ def load_user(user_id):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     weather = None
+    print("API KEY:", app.config['WEATHER_API_KEY'])
     if request.method == 'POST':
         city = request.form['city']
         weather = get_weather(city, app.config['WEATHER_API_KEY'])
